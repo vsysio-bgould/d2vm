@@ -9,7 +9,7 @@ on:
 jobs:
   tests:
     name: Tests
-    runs-on: d2vm
+    runs-on: self-hosted
 
     steps:
     - name: Checkout
@@ -47,7 +47,7 @@ jobs:
 
   templates-tests:
     name: Test Templates
-    runs-on: d2vm
+    runs-on: self-hosted
     strategy:
       matrix:
         image:
@@ -94,7 +94,7 @@ jobs:
 
   e2e-tests:
     name: End to end Tests
-    runs-on: d2vm
+    runs-on: self-hosted
     strategy:
       matrix:
         image:
@@ -140,7 +140,7 @@ jobs:
 
   docs-up-to-date:
     name: Docs up to date
-    runs-on: d2vm
+    runs-on: self-hosted
 
     steps:
     - name: Checkout
@@ -169,7 +169,7 @@ jobs:
 
   build:
     name: Build
-    runs-on: d2vm
+    runs-on: self-hosted
 
     steps:
     - name: Checkout
@@ -230,7 +230,7 @@ jobs:
 
   build-image:
     name: Build Docker Image
-    runs-on: d2vm
+    runs-on: self-hosted
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -275,7 +275,7 @@ jobs:
 
   release:
     name: Release Binaries
-    runs-on: d2vm
+    runs-on: self-hosted
     if: startsWith(github.event.ref, 'refs/tags/v')
     needs:
     - tests
@@ -325,7 +325,7 @@ jobs:
 
   release-image:
     name: Release Docker Image
-    runs-on: d2vm
+    runs-on: self-hosted
     if: startsWith(github.event.ref, 'refs/tags/v')
     needs:
     - tests
